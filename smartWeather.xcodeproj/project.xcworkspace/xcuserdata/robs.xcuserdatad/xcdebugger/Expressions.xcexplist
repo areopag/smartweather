@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "MainController.(updateUI(MainController) -&gt; () -&gt; ()).(closure #1):MainController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "currentWeatherData">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>
