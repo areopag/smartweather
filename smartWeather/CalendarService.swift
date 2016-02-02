@@ -33,7 +33,9 @@ class CalendarService: CalendarServiceProtocol {
         
         for event in events {
             print(event)
-            locations.append(event.location!)
+            if event.location != "" {
+                locations.append(event.location!)
+            }
         }
         
         return locations

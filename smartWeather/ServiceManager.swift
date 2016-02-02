@@ -15,6 +15,5 @@ class ServiceManager {
     static var calendarService: CalendarServiceProtocol = CalendarService()
     static var settingsService: SettingsServiceProtocol = SettingsService()    
     static var downloadService: DownloadServiceProtocol = DownloadService()
-    static var compassService: CompassServiceProtocol = CompassService()
     static var databaseService: DatabaseServiceProtocol = DatabaseService()
 }

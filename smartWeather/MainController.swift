@@ -35,11 +35,8 @@ class MainController: UIViewController, CLLocationManagerDelegate {
         super.viewDidLoad()
         print("ViewControllerDidLoad")
         
-        // read the cities list from file into the database
-        //ServiceManager.databaseService.updateCitiesList()
-        
         // set the background image
-        setBackgroundImage("sunny.jpg")
+        setBackgroundImage("sunny.jpg", size: CGSize(width: self.view.bounds.width, height: self.view.bounds.height))
         
         // add handlers for some gestures
         addGestureHandlers()
@@ -65,7 +62,15 @@ class MainController: UIViewController, CLLocationManagerDelegate {
         currentDay = 0
         loadWeather()
     }
+    
+    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
+        print("viewWillTransitionToSize")
         
+        // re-set the background image
+        setBackgroundImage("sunny.jpg", size: size)
+    }
+    
     func addGestureHandlers() {
         // add swipe gesture recognizers
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: Selector("handleSwipes:"))
@@ -102,12 +107,21 @@ class MainController: UIViewController, CLLocationManagerDelegate {
         print("reload weather")
         loadWeather()
     }
-    
-    func setBackgroundImage(filename:String) {
+
+    func setBackgroundImage(filename:String, size: CGSize) {
         let bgImage = UIImage(named: filename)
         let ratio = bgImage!.size.width / bgImage!.size.height
-        let newWidth = self.view.bounds.height * ratio
-        let newHeight = self.view.bounds.height
+        var newWidth : CGFloat = 0
+        var newHeight : CGFloat = 0
+        
+        if(size.width > size.height) {
+            newWidth = size.width
+            newHeight = size.width / ratio
+
+        } else {
+            newWidth = size.height * ratio
+            newHeight = size.height
+        }
         
         UIGraphicsBeginImageContext(CGSizeMake(newWidth, newHeight))
         bgImage?.drawInRect(CGRectMake(0, 0, newWidth, newHeight))

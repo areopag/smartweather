@@ -123,6 +123,8 @@ class DatabaseService:DatabaseServiceProtocol {
     }
     
     func updateCitiesList() {
+        var batchCounter : Int = 0
+        
         if let path = NSBundle.mainBundle().pathForResource("city.list" , ofType: "json") {
             print("read from \(path)")
             if let jsonData = NSData(contentsOfFile: path) {
@@ -140,8 +142,22 @@ class DatabaseService:DatabaseServiceProtocol {
                     city.setValue(c["country"].string, forKey: "country")
                     city.setValue(c["coord"]["lat"].double, forKey: "lat")
                     city.setValue(c["coord"]["lon"].double, forKey: "long")
+                    
+                    // save after 500 entries for preventing memory issues
+                    batchCounter++
+                    if(batchCounter >= 500) {
+                        print("batch written...")
+                        do {
+                            try managedContext.save()
+                        } catch let error as NSError  {
+                            print("Could not save \(error), \(error.userInfo)")
+                        }
+                        managedContext.reset()
+                        batchCounter = 0
+                    }
                 }
                 
+                // save the rest
                 do {
                     try managedContext.save()
                 } catch let error as NSError  {
