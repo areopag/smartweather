@@ -5,6 +5,8 @@
 //  Created by Robs on 21/10/15.
 //  Copyright © 2015 FH Joanneum. All rights reserved.
 //
+//  Controller for the Nearby view
+//
 
 import UIKit
 import CoreLocation
@@ -104,7 +106,7 @@ class NearbyController: UIViewController, CLLocationManagerDelegate, UITableView
         let row = indexPath.row
         
         cell.lblLocationName.text = weatherData[row].location.name
-        cell.lblWeatherDescription.text = weatherData[row].description
+        cell.lblWeatherDescription.text = "\(weatherData[row].description) (\(String(format: "%.1f", weatherData[row].temp)) °C)"
         
         // calculate distance
         let locEntry = CLLocation(latitude: weatherData[row].location.position.lat, longitude: weatherData[row].location.position.long)

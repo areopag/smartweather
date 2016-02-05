@@ -5,6 +5,8 @@
 //  Created by Florian on 19/10/15.
 //  Copyright © 2015 FH Joanneum. All rights reserved.
 //
+//  This class is responsible for downloading the weather data and the current location list
+//
 
 import Foundation
 

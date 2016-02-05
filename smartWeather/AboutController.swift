@@ -5,6 +5,8 @@
 //  Created by Robs on 21/10/15.
 //  Copyright © 2015 FH Joanneum. All rights reserved.
 //
+//  Controller for the Aboud view
+//
 
 import UIKit
 import CoreLocation
@@ -30,7 +32,24 @@ class AboutController: UIViewController, CLLocationManagerDelegate {
     
     func locationManager(manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
         print(newHeading.magneticHeading)
-        let degrees = Float(_builtinFloatLiteral: newHeading.magneticHeading.value)
+        
+        let orientation = UIDevice.currentDevice().orientation.rawValue
+        var correction : Float
+        
+        switch(orientation) {
+        case 2: // landscape
+            correction = 180
+        case 3: // portrait
+            correction = 270
+        case 4: // portrait
+            correction = 90
+        case 5: // landscape
+            correction = 0
+        default:
+            correction = 0
+        }
+        
+        let degrees = Float(newHeading.magneticHeading) - correction
         let rotation = -degrees * Float(M_PI) / 180
         
         // rotate the image

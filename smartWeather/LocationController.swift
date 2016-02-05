@@ -5,6 +5,8 @@
 //  Created by Robs on 21/10/15.
 //  Copyright © 2015 FH Joanneum. All rights reserved.
 //
+//  Controller for the Location view
+//
 
 import UIKit
 import EventKit
@@ -70,7 +72,7 @@ class LocationController: UIViewController, UITableViewDataSource, UITableViewDe
         print(recentCities)
         for item in recentCities {
             print("recentLocation: \(item)")
-            locationsList.append(locationTableItem(name: item.name!, details: "Recent search result", location: item, type: locationTableItemType.Recent))
+            locationsList.append(locationTableItem(name: "\(item.name!) (\(item.country))", details: "Recent search result", location: item, type: locationTableItemType.Recent))
         }
     }
     
@@ -97,19 +99,10 @@ class LocationController: UIViewController, UITableViewDataSource, UITableViewDe
         print("loadLocationsFromCalendar")
         
         do {
-            let appointmentLocationsStrings = try ServiceManager.calendarService.getCalendarEntryLocations(7)
-            var appointmentLocations = [Location]()
-            for l in appointmentLocationsStrings {
-                print("Location: \(l)")
-                if let appointmentLocation = ServiceManager.databaseService.getLocationFromCityName(l) {
-                    appointmentLocations.append(appointmentLocation)
-                }
-            }
+            let appointmentLocations = try ServiceManager.calendarService.getCalendarEntryLocations(7)
             
-            // add appointments to the list
-            for item in appointmentLocations {
-                print("appointmentLocation: \(item.name)")
-                locationsList.append(locationTableItem(name: item.name!, details: "Appointment", location: item, type: locationTableItemType.Appointment))
+            for item in appointmentLocations {                
+                locationsList.append(locationTableItem(name: "\(item.name!) (\(item.country))", details: "Appointment: \(item.details)", location: item, type: locationTableItemType.Appointment))
             }
             
             updateUI()
@@ -176,7 +169,7 @@ class LocationController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-        if(searchText != "") {
+        if(searchText.characters.count >= 2) {
             search(searchText)
         } else {
             loadList()
@@ -192,8 +185,8 @@ class LocationController: UIViewController, UITableViewDataSource, UITableViewDe
         locationsList = []
         
         for item in results {
-            print("searchResultLocation: \(item)")
-            locationsList.append(locationTableItem(name: item.name!, details: "Search result", location: item, type: locationTableItemType.Search))
+            print("searchResultLocation: \(item)")            
+            locationsList.append(locationTableItem(name: "\(item.name!) (\(item.country))", details: "Search result", location: item, type: locationTableItemType.Search))
         }
         
         updateUI()

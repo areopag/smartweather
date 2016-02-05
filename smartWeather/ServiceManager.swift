@@ -2,8 +2,10 @@
 //  ServiceManager.swift
 //  smartWeather
 //
-//  Created by Florian on 20/10/15.
+//  Created by Robs on 20/10/15.
 //  Copyright © 2015 FH Joanneum. All rights reserved.
+//
+//  For accessing the instanciated Services
 //
 
 import Foundation

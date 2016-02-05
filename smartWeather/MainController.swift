@@ -5,6 +5,8 @@
 //  Created by Robs on 17/10/15.
 //  Copyright © 2015 FH Joanneum. All rights reserved.
 //
+//  Controller for the Main view
+//
 
 import UIKit
 import CoreLocation
@@ -19,15 +21,12 @@ class MainController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var lblSummaryState: UILabel!
     @IBOutlet weak var lblIcon: UILabel!
     @IBOutlet weak var lblDetails: UILabel!
-    
     @IBOutlet weak var pcDay: UIPageControl!
-    
-    var animatedStateIcon: UIImageView!
     @IBOutlet weak var lblIcon2: UILabel!
     @IBOutlet weak var lblIcon3: UILabel!
     
+    var animatedStateIcon: UIImageView!
     var locationManager: CLLocationManager!
-    
     var currentWeatherData: [DayWeather]!
     var currentDay: Int = 0
     
@@ -36,7 +35,7 @@ class MainController: UIViewController, CLLocationManagerDelegate {
         print("ViewControllerDidLoad")
         
         // set the background image
-        setBackgroundImage("sunny.jpg", size: CGSize(width: self.view.bounds.width, height: self.view.bounds.height))
+        setBackgroundImage("wiese.jpg", size: CGSize(width: self.view.bounds.width, height: self.view.bounds.height))
         
         // add handlers for some gestures
         addGestureHandlers()
@@ -63,12 +62,13 @@ class MainController: UIViewController, CLLocationManagerDelegate {
         loadWeather()
     }
     
+    // on screen rotation
     override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
         print("viewWillTransitionToSize")
         
         // re-set the background image
-        setBackgroundImage("sunny.jpg", size: size)
+        setBackgroundImage("wiese.jpg", size: size)
     }
     
     func addGestureHandlers() {
@@ -116,7 +116,7 @@ class MainController: UIViewController, CLLocationManagerDelegate {
         
         if(size.width > size.height) {
             newWidth = size.width
-            newHeight = size.width / ratio
+            newHeight = size.height
 
         } else {
             newWidth = size.height * ratio
@@ -184,7 +184,7 @@ class MainController: UIViewController, CLLocationManagerDelegate {
         
                 // update the labels
                 self.lblTitle.text = "\(dateString)"
-                self.lblDetails.text = "\(weather.temp) °C / \(weather.humi) %"
+                self.lblDetails.text =  "\(String(format: "%.1f", weather.temp)) °C / \(String(format: "%.0f", weather.humi)) %"
                 self.lblLocation.text = weather.location.name
                 self.lblSummaryState.text =  weather.description
     

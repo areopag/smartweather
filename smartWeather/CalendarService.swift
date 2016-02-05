@@ -2,8 +2,10 @@
 //  CalendarService.swift
 //  smartWeather
 //
-//  Created by Florian on 20/10/15.
+//  Created by Robs on 20/10/15.
 //  Copyright © 2015 FH Joanneum. All rights reserved.
+//
+//  Service for getting access to the calendar
 //
 
 import Foundation
@@ -15,10 +17,10 @@ class CalendarService: CalendarServiceProtocol {
     
     let eventStore = EKEventStore()
     
-    func getCalendarEntryLocations(upcomingDays: Int) throws -> [String] {
+    func getCalendarEntryLocations(upcomingDays: Int) throws -> [Location] {
         try checkCalendarAuthorizationStatus()
         
-        var locations = [String]()
+        var locations = [Location]()
         
         // get all calendars
         let calendars = eventStore.calendarsForEntityType(EKEntityType.Event)
@@ -33,8 +35,11 @@ class CalendarService: CalendarServiceProtocol {
         
         for event in events {
             print(event)
-            if event.location != "" {
-                locations.append(event.location!)
+            if event.location != "" {                
+                if let appointmentLocation = ServiceManager.databaseService.getLocationFromCityName(event.location!) {
+                    appointmentLocation.details = event.title
+                    locations.append(appointmentLocation)                    
+                }
             }
         }
         

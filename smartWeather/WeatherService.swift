@@ -2,8 +2,10 @@
 //  WeatherService.swift
 //  smartWeather
 //
-//  Created by Florian on 19/10/15.
+//  Created by Robs on 19/10/15.
 //  Copyright © 2015 FH Joanneum. All rights reserved.
+//
+//  Provides several functions for accessing the OpenWeatherMap API (JSON-Responses)
 //
 
 import Foundation

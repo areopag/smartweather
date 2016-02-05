@@ -5,6 +5,9 @@
 //  Created by Florian on 07/11/15.
 //  Copyright © 2015 FH Joanneum. All rights reserved.
 //
+//  Provides access to the CoreData Database Service
+//  Here are the Locations stored
+//
 
 import Foundation
 import CoreData
@@ -23,11 +26,12 @@ class DatabaseService:DatabaseServiceProtocol {
             print("cities queried: \(citiesRaw.count)")
             if citiesRaw.count > 0 {
                 let c = citiesRaw[0]
-                let values = c.committedValuesForKeys(["id","name","lat","long"])
+                let values = c.committedValuesForKeys(["id","name","lat","long","country"])
                 let position = Geoposition(lat:values["lat"] as! Double, long: values["long"] as! Double)
                 let location = Location(position: position)
                 location.name = values["name"] as? String
                 location.cityId = values ["id"] as? Int
+                location.country = (values["country"] as? String)!
                 return location
             }
         } catch let error as NSError {
@@ -60,11 +64,12 @@ class DatabaseService:DatabaseServiceProtocol {
             let citiesRaw = results as! [NSManagedObject]
             print("cities queried: \(citiesRaw.count)")
             for row in citiesRaw {
-                let values = row.committedValuesForKeys(["id","name","lat","long"])
+                let values = row.committedValuesForKeys(["id","name","lat","long","country"])
                 let position = Geoposition(lat:values["lat"] as! Double, long: values["long"] as! Double)
                 let location = Location(position: position)
                 location.name = values["name"] as? String
                 location.cityId = values ["id"] as? Int
+                location.country = (values["country"] as? String)!
                 locations.append(location)
             }
         } catch let error as NSError {
@@ -94,11 +99,12 @@ class DatabaseService:DatabaseServiceProtocol {
             let citiesRaw = results as! [NSManagedObject]
             print("cities queried: \(citiesRaw.count)")
             for row in citiesRaw {
-                let values = row.committedValuesForKeys(["id","name","lat","long"])
+                let values = row.committedValuesForKeys(["id","name","lat","long","country"])
                 let position = Geoposition(lat:values["lat"] as! Double, long: values["long"] as! Double)
                 let location = Location(position: position)
                 location.name = values["name"] as? String
                 location.cityId = values ["id"] as? Int
+                location.country = (values["country"] as? String)!
                 locations.append(location)
             }
         } catch let error as NSError {

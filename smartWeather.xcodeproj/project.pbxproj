@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		DD0B096E1C537FF80095BBED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DD0B096D1C537FF80095BBED /* Assets.xcassets */; };
 		DD0B09711C537FF80095BBED /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD0B096F1C537FF80095BBED /* LaunchScreen.storyboard */; };
-		DD0B097A1C53805F0095BBED /* sunny.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DD0B09791C53805F0095BBED /* sunny.jpg */; };
 		DD0B097C1C5380630095BBED /* sun.png in Resources */ = {isa = PBXBuildFile; fileRef = DD0B097B1C5380630095BBED /* sun.png */; };
 		DD0B097E1C53806A0095BBED /* about.png in Resources */ = {isa = PBXBuildFile; fileRef = DD0B097D1C53806A0095BBED /* about.png */; };
 		DD0B09811C5380770095BBED /* location.png in Resources */ = {isa = PBXBuildFile; fileRef = DD0B09801C5380770095BBED /* location.png */; };
@@ -37,6 +36,7 @@
 		DD0B09B91C5381A80095BBED /* CalendarService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0B09B81C5381A80095BBED /* CalendarService.swift */; };
 		DD0B09BB1C5381AC0095BBED /* CalendarError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0B09BA1C5381AC0095BBED /* CalendarError.swift */; };
 		DD0B09BE1C53821C0095BBED /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD0B09BD1C53821C0095BBED /* Main.storyboard */; };
+		DD3D47BF1C61F25400096A29 /* wiese.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DD3D47BE1C61F25400096A29 /* wiese.jpg */; };
 		DD58DD951C53858300069BA4 /* ServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD58DD941C53858300069BA4 /* ServiceManager.swift */; };
 		DD58DD971C53859B00069BA4 /* SettingsServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD58DD961C53859B00069BA4 /* SettingsServiceProtocol.swift */; };
 		DD58DD991C5385A600069BA4 /* SettingsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD58DD981C5385A600069BA4 /* SettingsService.swift */; };
@@ -71,7 +71,6 @@
 		DD0B096D1C537FF80095BBED /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DD0B09701C537FF80095BBED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DD0B09721C537FF80095BBED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		DD0B09791C53805F0095BBED /* sunny.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sunny.jpg; sourceTree = "<group>"; };
 		DD0B097B1C5380630095BBED /* sun.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sun.png; sourceTree = "<group>"; };
 		DD0B097D1C53806A0095BBED /* about.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = about.png; sourceTree = "<group>"; };
 		DD0B097F1C5380730095BBED /* iconvault_forecastfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = iconvault_forecastfont.ttf; sourceTree = "<group>"; };
@@ -100,6 +99,7 @@
 		DD0B09B81C5381A80095BBED /* CalendarService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarService.swift; sourceTree = "<group>"; };
 		DD0B09BA1C5381AC0095BBED /* CalendarError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarError.swift; sourceTree = "<group>"; };
 		DD0B09BD1C53821C0095BBED /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		DD3D47BE1C61F25400096A29 /* wiese.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = wiese.jpg; sourceTree = "<group>"; };
 		DD58DD941C53858300069BA4 /* ServiceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceManager.swift; sourceTree = "<group>"; };
 		DD58DD961C53859B00069BA4 /* SettingsServiceProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsServiceProtocol.swift; sourceTree = "<group>"; };
 		DD58DD981C5385A600069BA4 /* SettingsService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsService.swift; sourceTree = "<group>"; };
@@ -186,8 +186,8 @@
 				DD0B097F1C5380730095BBED /* iconvault_forecastfont.ttf */,
 				DD0B097D1C53806A0095BBED /* about.png */,
 				DD0B097B1C5380630095BBED /* sun.png */,
-				DD0B09791C53805F0095BBED /* sunny.jpg */,
 				DDBF9FEE1C60F6F100AD17A3 /* compass.png */,
+				DD3D47BE1C61F25400096A29 /* wiese.jpg */,
 			);
 			name = Ressources;
 			sourceTree = "<group>";
@@ -344,9 +344,9 @@
 				DD58DDA61C53876E00069BA4 /* iconvault_forecastfont.ttf in Resources */,
 				DDFF8AB81C5913A500FCE39C /* type_calendar.png in Resources */,
 				DD0B09711C537FF80095BBED /* LaunchScreen.storyboard in Resources */,
-				DD0B097A1C53805F0095BBED /* sunny.jpg in Resources */,
 				DD0B097C1C5380630095BBED /* sun.png in Resources */,
 				DD0B09BE1C53821C0095BBED /* Main.storyboard in Resources */,
+				DD3D47BF1C61F25400096A29 /* wiese.jpg in Resources */,
 				DD0B096E1C537FF80095BBED /* Assets.xcassets in Resources */,
 				DD58DDA21C53866E00069BA4 /* city.list.json in Resources */,
 				DDFF8ABA1C5913A500FCE39C /* type_search.png in Resources */,

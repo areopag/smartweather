@@ -9,5 +9,5 @@
 import Foundation
 
 protocol CalendarServiceProtocol {
-    func getCalendarEntryLocations(upcomingDays: Int) throws -> [String]
+    func getCalendarEntryLocations(upcomingDays: Int) throws -> [Location]
 }
